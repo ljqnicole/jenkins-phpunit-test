@@ -5,7 +5,14 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                sh 'ls -al'
+                sh 'cat composer.json || echo "composer.json not found"'
+            }
+        }
+        stage('Build') 
             steps {
                 sh 'composer install'
             }
@@ -18,7 +25,7 @@ pipeline {
     }
     post {
         always {
-            junit testResults: 'logs/unitreport.xml'
+            junit 'logs/unitreport.xml'
         }
     }
 }
