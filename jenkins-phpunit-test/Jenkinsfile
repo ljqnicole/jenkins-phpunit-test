@@ -4,20 +4,20 @@ pipeline {
             image 'composer:latest'
         }
     }
-    // stages {
-    //     stage('Checkout') {
-    //         steps {
-    //             checkout scm
-    //             sh 'echo "Current directory:"'
-    //             sh 'pwd'
-    //             sh 'echo "Listing all files in the workspace:"'
-    //             sh 'ls -al'
-    //             sh 'echo "Listing all files in the jenkins-phpunit-test directory:"'
-    //             sh 'ls -al jenkins-phpunit-test'
-    //             sh 'echo "Displaying composer.json content:"'
-    //             sh 'cat jenkins-phpunit-test/composer.json || echo "composer.json not found"'
-    //         }
-    //     }
+    stages {
+        // stage('Checkout') {
+        //     steps {
+        //         checkout scm
+        //         sh 'echo "Current directory:"'
+        //         sh 'pwd'
+        //         sh 'echo "Listing all files in the workspace:"'
+        //         sh 'ls -al'
+        //         sh 'echo "Listing all files in the jenkins-phpunit-test directory:"'
+        //         sh 'ls -al jenkins-phpunit-test'
+        //         sh 'echo "Displaying composer.json content:"'
+        //         sh 'cat jenkins-phpunit-test/composer.json || echo "composer.json not found"'
+        //     }
+        // }
         stage('Build') {
             steps {
                 dir('jenkins-phpunit-test') {
