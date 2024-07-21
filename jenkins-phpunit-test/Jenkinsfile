@@ -30,6 +30,7 @@ pipeline {
     post {
         always {
             junit 'logs/unitreport.xml'
+            junit 'logs/unitreport.xml'
         }
     }
 }
