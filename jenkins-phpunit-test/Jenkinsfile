@@ -5,6 +5,17 @@ pipeline {
         }
     }
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                sh 'echo "Current directory:"'
+                sh 'pwd'
+                sh 'echo "Listing all files in the workspace:"'
+                sh 'ls -al'
+                sh 'echo "Displaying composer.json content:"'
+                sh 'cat composer.json || echo "composer.json not found"'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'composer install'
@@ -18,7 +29,7 @@ pipeline {
     }
     post {
         always {
-            junit testResults: 'logs/unitreport.xml'
+            junit 'logs/unitreport.xml'
         }
     }
 }
